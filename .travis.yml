@@ -1,0 +1,22 @@
+language: minimal
+
+services: docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.28.5
+
+before_install:
+  # Docker Compose Install 
+  - docker -v && docker-compose -v
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+# Pre-testing installs
+install:
+  - docker-compose -f docker-compose-build.yaml build --parallel
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push "$DOCKER_USERNAME"/udagram-api-user:latest
+  - docker push "$DOCKER_USERNAME"/udagram-api-feed:latest
+  - docker push "$DOCKER_USERNAME"/udagram-frontend:local
+  - docker push "$DOCKER_USERNAME"/reverseproxy:latest
