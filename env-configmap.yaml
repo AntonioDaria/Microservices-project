@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  AWS_BUCKET: monolith-proj-180228063476-dev
+  AWS_PROFILE: default
+  AWS_REGION: us-eu-west-2
+  JWT_SECRET: hello
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: ad-monolith-dev.clsnflhd2bh7.us-east-1.rds.amazonaws.com
+  URL: http://localhost:8100  
+metadata:
+  name: env-config
+  
+# you will replace URL with the URL of the frontend once you deploy it to AWS.
+# You need to enter the values here, so you can not use environment variable syntax, such as `$AWS_BUCKET`
