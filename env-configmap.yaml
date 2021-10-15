@@ -5,8 +5,9 @@ data:
   AWS_PROFILE: default
   AWS_REGION: us-eu-west-2
   JWT_SECRET: hello
-  POSTGRES_DB: postgres
-  POSTGRES_HOST: ad-monolith-dev.clsnflhd2bh7.us-east-1.rds.amazonaws.com
+  POSTGRESS_DB: postgres
+  POSTGRESS_HOST: ad-monolith-dev.clsnflhd2bh7.us-east-1.rds.amazonaws.com
+  POSTGRESS_PASSWORD: Aw3s0meyou
   URL: http://localhost:8100  
 metadata:
   name: env-config
